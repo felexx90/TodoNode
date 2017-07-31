@@ -1,4 +1,5 @@
 const Todo = require('../models/todo.model');
+const mongoose= require('mongoose');
 
 function saveTodo(req, res) {
     Todo.create(req.body).then((todo) => {
@@ -11,7 +12,7 @@ function saveTodo(req, res) {
 }
 
 function updateTodo(req, res) {
-    Todo.update({_id: req.swagger.params.id}, {$set: req.body}).then((todo) => {
+    Todo.update({_id: new mongoose.Types.ObjectId(req.swagger.params.id.value)}, {$set: req.body}).then((todo) => {
         console.log('Updated created: ',todo);
         res.json({success: 1, description: "Todo updated!"});
     }).catch((err) => {

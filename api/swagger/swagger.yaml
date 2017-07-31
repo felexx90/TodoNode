@@ -60,7 +60,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
   /todo/{id}:
-    x-swagger-pipe: todo
+    x-swagger-router-controller: todo
     get:
       description: Get a Todo with Id
       operationId: getTodo
@@ -104,7 +104,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
     delete:
-      description: delete a movie
+      description: delete a Todo
       # define the parameters
       operationId: deleteTodo
       parameters:
